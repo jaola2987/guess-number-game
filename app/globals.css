@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--main-gap: 16px;
+	--primary-color: #191e25;
+	--secondary-color: #272e3b;
+	--light-color: #383e4d;
+	--super-light-color: #7a8196;
+	--highlight-light-color: #ff6044;
+	--highlight-dark-color: #e13b80;
+	--main-text-color: #ffff;
+	--secondary-text-color: #7f879a;
+	--border-radius: 8px;
+	--buttons-height: 45px;
+	--border: 1px solid var(--light-color);
+}
+
+body {
+	background-color: var(--primary-color);
+	color: var(--main-text-color);
+}
+
+.wrappers {
+	display: flex;
+}
+
+.recharts-wrapper svg .recharts-layer g {
+	background-color: red;
+}

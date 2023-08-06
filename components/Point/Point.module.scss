@@ -1,0 +1,38 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 5px 10px;
+	background: linear-gradient(
+		to right,
+		var(--primary-color),
+		var(--secondary-color)
+	);
+	text-align: center;
+	border-radius: var(--border-radius);
+	height: var(--buttons-height);
+	border: var(--border);
+}
+.inputAndButtonsWrapper {
+	display: flex;
+	gap: 3px;
+}
+
+.inputPoints {
+	height: 25px;
+	font-size: 14px;
+	text-align: center;
+}
+
+.fieldLable {
+	font-size: 8px;
+	color: var(--secondary-text-color);
+}
+
+.incrementButton {
+	border: var(--border);
+	padding: 3px;
+	border-radius: 5px;
+}

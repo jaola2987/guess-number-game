@@ -1,0 +1,18 @@
+.wrapper {
+	@apply flex;
+	gap: var(--main-gap);
+	@media (max-width: 740px) {
+		flex-direction: column;
+	}
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: var(--main-gap);
+	padding: 30px 80px;
+	max-width: 1100px;
+	margin: 0 auto;
+	min-height: 100vh;
+}

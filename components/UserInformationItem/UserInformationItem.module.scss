@@ -1,0 +1,29 @@
+.item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	padding: 5px 10px;
+	background: linear-gradient(
+		to right,
+		var(--primary-color),
+		var(--secondary-color)
+	);
+	text-align: center;
+	border-radius: var(--border-radius);
+	height: var(--buttons-height);
+	border: var(--border);
+	gap: var(--main-gap);
+}
+
+.icon {
+	display: flex;
+	flex: 0;
+}
+
+.text {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+}

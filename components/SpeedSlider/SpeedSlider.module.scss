@@ -1,0 +1,51 @@
+.wrapper {
+	background-color: var(--secondary-color);
+	border: var(--border);
+	border-radius: var(--border-radius);
+	padding: 7px;
+	font-size: 8px;
+	// input[type='range'] {
+	// 	-webkit-appearance: none;
+	// 	width: 100%;
+
+	// 	&::-webkit-slider-runnable-track {
+	// 		height: 2px;
+	// 		// background: '#313844';
+	// 		border-radius: 5px;
+	// 	}
+
+	// 	&::-webkit-slider-thumb {
+	// 		-webkit-appearance: none;
+	// 		height: 20px;
+	// 		width: 20px;
+	// 		background: rgba(234, 70, 105, 1);
+	// 		border-radius: 50%;
+	// 	}
+	// }
+
+	.input {
+		width: 100%;
+	}
+
+	input[type='range'] {
+		accent-color: var(--highlight-dark-color);
+		height: 3px;
+		margin-bottom: 8px;
+	}
+
+	// .input::-webkit-slider-runnable-track {
+	// 	accent-color: coral;
+	// 	height: 3px;
+	// }
+
+	// .input::-webkit-slider-thumb {
+	// 	width: 5px;
+	// 	height: 5px;
+	// 	accent-color: coral;
+	// }
+
+	.labels {
+		display: flex;
+		justify-content: space-between;
+	}
+}

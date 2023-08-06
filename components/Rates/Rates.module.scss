@@ -1,0 +1,8 @@
+.rateWrapper {
+	display: flex;
+	width: 300px;
+	min-height: 360px;
+	@media (max-width: 740px) {
+		width: 100%;
+	}
+}

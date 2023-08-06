@@ -1,0 +1,74 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+
+	.chatBody {
+		display: flex;
+		height: 160px;
+		flex-direction: column;
+		justify-content: space-between;
+		border: var(--border);
+		border-radius: var(--border-radius);
+		overflow: hidden;
+
+		.messagesBox {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+			padding: 5px 10px;
+			font-size: 12px;
+			height: 107px;
+
+			::-webkit-scrollbar {
+				width: 4px;
+				border-radius: 12px;
+			}
+
+			::-webkit-scrollbar-track {
+				background: #383333;
+				border-radius: 12px;
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: #3f4657;
+				border-radius: 12px;
+			}
+
+			::-webkit-scrollbar-thumb:hover {
+				background: #555;
+			}
+		}
+	}
+
+	.inputWrapper {
+		display: flex;
+		gap: 5px;
+		background-color: var(--light-color);
+		padding: 8px 5px;
+		border-radius: 0px 0px 8px 8px;
+
+		.chatInput {
+			display: flex;
+			flex: 1;
+			height: 35px;
+		}
+
+		.button {
+			display: flex;
+			flex: 0;
+			justify-content: center;
+			align-items: center;
+			background: linear-gradient(
+				to right,
+				var(--highlight-dark-color),
+				var(--highlight-light-color)
+			);
+			height: 35px;
+			border-radius: var(--border-radius);
+			padding: 5px 15px;
+			min-width: 100px;
+			font-size: 13px;
+		}
+	}
+}

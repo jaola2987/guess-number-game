@@ -1,0 +1,53 @@
+.wrapper {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--secondary-color);
+	border-radius: var(--border-radius);
+	border: var(--border);
+	padding: 30px;
+	text-align: center;
+	width: 100%;
+}
+
+.title {
+	position: absolute;
+	top: 30px;
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--secondary-text-color);
+}
+
+.fieldLable {
+	font-size: 10px;
+	color: var(--secondary-text-color);
+	margin-bottom: 5px;
+}
+
+.inputWrapper {
+	display: inline-flex;
+	flex-direction: column;
+	gap: 5px;
+	width: 100%;
+}
+
+.submitButton {
+	background: linear-gradient(
+		to right,
+		var(--highlight-dark-color),
+		var(--highlight-light-color)
+	);
+	min-height: var(--buttons-height);
+	border-radius: var(--border-radius);
+	padding: 5px 15px;
+
+	&:disabled {
+		background: var(--super-light-color);
+	}
+}
+
+.authorizeInput {
+	height: var(--buttons-height);
+}

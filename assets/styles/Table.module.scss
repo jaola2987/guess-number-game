@@ -1,0 +1,49 @@
+.rate {
+	table {
+		width: 100%;
+		border-collapse: separate;
+		border-spacing: 0;
+		border-radius: var(--border-radius);
+		border: var(--border);
+		overflow: hidden;
+	}
+	th {
+		font-size: 8px;
+		font-weight: normal;
+		color: var(--secondary-text-color);
+		background-color: #15191f;
+		padding: 2px 15px;
+	}
+	td {
+		font-size: 12px;
+		font-weight: normal;
+		padding: 5px 15px;
+	}
+	th:nth-child(1),
+	td:nth-child(1) {
+		width: 50%;
+		text-align: left;
+	}
+	th:nth-child(2),
+	td:nth-child(2) {
+		width: 25%;
+		text-align: center;
+	}
+	th:nth-child(3),
+	td:nth-child(3) {
+		width: 25%;
+		text-align: center;
+	}
+}
+
+.myRate {
+	background-color: #3f4657;
+}
+
+.oddRow {
+	background-color: #191f27;
+}
+
+.evenRow {
+	background-color: #222832;
+}

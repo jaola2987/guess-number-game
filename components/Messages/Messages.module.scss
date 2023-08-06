@@ -1,0 +1,30 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	overflow: auto;
+}
+
+.author {
+	min-width: 40px;
+}
+
+.visitor {
+	color: var(--highlight-dark-color);
+}
+
+.currentAuthor {
+	color: var(--highlight-light-color);
+}
+
+.messageWrapper {
+	display: flex;
+	gap: 5px;
+}
+
+.message {
+	background-color: var(--light-color);
+	padding: 2px;
+	border-radius: 4px;
+	font-size: 8px;
+}
