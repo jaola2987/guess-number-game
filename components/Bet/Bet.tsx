@@ -1,7 +1,9 @@
 import React from 'react'
 import Point from '../Point/Point'
 import styles from './Bet.module.scss'
+import buttonStyles from '@/assets/styles/Button.module.scss'
 import { useGlobalProviderContext } from '@/providers/GlobalContext/GlobalContext'
+import cn from 'classnames'
 
 export default function Points() {
 	const {
@@ -11,7 +13,8 @@ export default function Points() {
 		multiplier,
 		handleMultiplierIncrement,
 		handleMultiplierDecrement,
-		startBets
+		startBets,
+		isBetStoped
 	} = useGlobalProviderContext()
 
 	return (
@@ -30,7 +33,11 @@ export default function Points() {
 					decrementValue={handleMultiplierDecrement}
 				/>
 			</div>
-			<button onClick={startBets} className={styles.button}>
+			<button
+				onClick={startBets}
+				className={cn(buttonStyles.button, styles.betButton)}
+				disabled={!isBetStoped}
+			>
 				Start
 			</button>
 		</div>

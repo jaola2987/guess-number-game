@@ -21,6 +21,9 @@
 }
 
 .inputPoints {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 25px;
 	font-size: 14px;
 	text-align: center;

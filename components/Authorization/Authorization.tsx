@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import styles from './Authorization.module.scss'
+import buttonStyles from '@/assets/styles/Button.module.scss'
 import inputStyles from '@/assets/styles/Input.module.scss'
 import cn from 'classnames'
 import { useGlobalProviderContext } from '@/providers/GlobalContext/GlobalContext'
@@ -26,7 +27,7 @@ export default function Authorization() {
 					}}
 				/>
 				<button
-					className={styles.submitButton}
+					className={cn(buttonStyles.button, styles.submitButton)}
 					type="submit"
 					disabled={!inputValue}
 				>

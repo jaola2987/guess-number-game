@@ -4,6 +4,7 @@ import { FormEvent, useContext, useEffect, useState } from 'react'
 import Title from '../Title/Title'
 import { HiChatAlt2 } from 'react-icons/hi'
 import styles from './Chat.module.scss'
+import buttonStyles from '@/assets/styles/Button.module.scss'
 import inputStyles from '@/assets/styles/Input.module.scss'
 import cn from 'classnames'
 import Messages from '../Messages/Messages'
@@ -50,7 +51,7 @@ export default function Chat() {
 			<Title icon={<HiChatAlt2 />} text={'Chat'} />
 			<div className={styles.chatBody}>
 				<div className={styles.messagesBox}>
-					<Messages message={message} />
+					{user && <Messages message={message} />}
 				</div>
 				<form className={styles.inputWrapper} onSubmit={onClickHandle}>
 					<input
@@ -58,7 +59,11 @@ export default function Chat() {
 						onChange={e => setValue(e.target.value)}
 						className={cn(inputStyles.inputField, styles.chatInput)}
 					/>
-					<button disabled={!user} className={styles.button} type="submit">
+					<button
+						disabled={!user}
+						className={cn(buttonStyles.button, styles.button)}
+						type="submit"
+					>
 						Start
 					</button>
 				</form>

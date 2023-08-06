@@ -14,7 +14,7 @@
 
 .title {
 	position: absolute;
-	top: 30px;
+	top: 60px;
 	font-size: 20px;
 	font-weight: 600;
 	color: var(--secondary-text-color);
@@ -34,18 +34,7 @@
 }
 
 .submitButton {
-	background: linear-gradient(
-		to right,
-		var(--highlight-dark-color),
-		var(--highlight-light-color)
-	);
 	min-height: var(--buttons-height);
-	border-radius: var(--border-radius);
-	padding: 5px 15px;
-
-	&:disabled {
-		background: var(--super-light-color);
-	}
 }
 
 .authorizeInput {

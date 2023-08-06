@@ -31,4 +31,5 @@ export interface IGlobalContextProps {
 	randomNumber: number
 	showChart: boolean
 	isResultNunber: boolean
+	isBetStoped: boolean
 }

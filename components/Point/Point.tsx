@@ -20,12 +20,10 @@ const Point: FC<IPointProps> = ({
 				<button onClick={decrementValue} className={styles.incrementButton}>
 					<BiSolidDownArrow size={14} />
 				</button>
-				<input
-					type="text"
-					className={cn(inputStyles.inputField, styles.inputPoints)}
-					value={value}
-					onChange={() => {}}
-				/>
+				<div className={cn(inputStyles.inputField, styles.inputPoints)}>
+					{value}
+				</div>
+
 				<button onClick={incrementValue} className={styles.incrementButton}>
 					<BiSolidUpArrow size={14} />
 				</button>

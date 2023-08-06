@@ -1,0 +1,16 @@
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(
+		to right,
+		var(--highlight-dark-color),
+		var(--highlight-light-color)
+	);
+	border-radius: var(--border-radius);
+	padding: 5px 15px;
+	width: 100%;
+	&:disabled {
+		background: var(--super-light-color);
+	}
+}

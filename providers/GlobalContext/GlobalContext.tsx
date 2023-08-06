@@ -43,6 +43,7 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 	const [randomNumber, setRandomNumber] = useState(0)
 	const [showChart, setShowChart] = useState(false)
 	const [isResultNunber, setIsResultNunber] = useState(false)
+	const [isBetStoped, setIsBetStoped] = useState(true)
 
 	const handleAuth = useCallback((e: string) => setUser(e), [])
 
@@ -83,9 +84,7 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 				bet.point = 0
 			}
 			if (bet.id === userId) {
-				if (num <= +bet.multiplier) {
-					setCoints(prev => prev - points)
-				} else {
+				if (num > +bet.multiplier) {
 					setCoints(prev => prev + +bet.point)
 				}
 			}
@@ -102,6 +101,8 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 	}
 
 	const startBets = useCallback(() => {
+		setIsBetStoped(false)
+		setCoints(prev => prev - points)
 		const mockData = [
 			{ id: 1, name: 'CRU 1', point: 100, multiplier: 7.53 },
 			{ id: 2, name: 'CRU 2', point: 100, multiplier: 1.24 },
@@ -122,6 +123,7 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 			resultBets(fulfiledBets, num)
 			getRanking(fulfiledBets)
 			setIsResultNunber(true)
+			setIsBetStoped(true)
 		}, speed * 3000)
 	}, [points, multiplier, speed])
 
@@ -145,7 +147,8 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 			userId,
 			randomNumber,
 			showChart,
-			isResultNunber
+			isResultNunber,
+			isBetStoped
 		}),
 		[
 			user,
@@ -165,7 +168,8 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 			ranking,
 			randomNumber,
 			showChart,
-			isResultNunber
+			isResultNunber,
+			isBetStoped
 		]
 	)
 	return (

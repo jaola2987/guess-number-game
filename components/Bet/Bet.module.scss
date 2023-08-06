@@ -9,14 +9,6 @@
 	gap: var(--main-gap);
 }
 
-.button {
-	background: linear-gradient(
-		to right,
-		var(--highlight-dark-color),
-		var(--highlight-light-color)
-	);
+.betButton {
 	min-height: var(--buttons-height);
-	border-radius: var(--border-radius);
-	padding: 5px 15px;
-	width: 100%;
 }
