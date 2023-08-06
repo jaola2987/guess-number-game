@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useEffect, useState } from 'react'
+import { FormEvent, useContext, useEffect, useState } from 'react'
 import Title from '../Title/Title'
 import { HiChatAlt2 } from 'react-icons/hi'
 import styles from './Chat.module.scss'
@@ -8,16 +8,15 @@ import inputStyles from '@/assets/styles/Input.module.scss'
 import cn from 'classnames'
 import Messages from '../Messages/Messages'
 import { WebsocketContext } from '@/providers/SocketContext/SocketIoProvider'
-
-export interface IMessagePayload {
-	content: string
-	msg: string
-}
+import { useGlobalProviderContext } from '@/providers/GlobalContext/GlobalContext'
+import { IMessagesPayload } from './chat.interface'
 
 export default function Chat() {
 	const [value, setValue] = useState('')
-	const [message, setMessage] = useState<IMessagePayload[]>([])
+	const [message, setMessage] = useState<IMessagesPayload[]>([])
 	const socket = useContext(WebsocketContext)
+
+	const { user } = useGlobalProviderContext()
 
 	useEffect(() => {
 		socket.on('connect', () => {
@@ -35,8 +34,14 @@ export default function Chat() {
 		}
 	}, [])
 
-	const onClickHandle = () => {
-		socket.emit('newMessage', value)
+	const onClickHandle = (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		const newVal = {
+			id: +new Date(),
+			name: user,
+			message: value
+		}
+		socket.emit('newMessage', newVal)
 		setValue('')
 	}
 
@@ -47,20 +52,16 @@ export default function Chat() {
 				<div className={styles.messagesBox}>
 					<Messages message={message} />
 				</div>
-				<div className={styles.inputWrapper}>
+				<form className={styles.inputWrapper} onSubmit={onClickHandle}>
 					<input
 						value={value}
 						onChange={e => setValue(e.target.value)}
 						className={cn(inputStyles.inputField, styles.chatInput)}
 					/>
-					<button
-						onClick={onClickHandle}
-						className={styles.button}
-						type="submit"
-					>
+					<button disabled={!user} className={styles.button} type="submit">
 						Start
 					</button>
-				</div>
+				</form>
 			</div>
 		</div>
 	)
