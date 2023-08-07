@@ -37,29 +37,3 @@ const SpeedSlider: React.FC = () => {
 }
 
 export default SpeedSlider
-
-// import { FC, ChangeEvent, useState } from 'react'
-
-// const SpeedSlider: FC = () => {
-// 	const [speed, setSpeed] = useState(1)
-
-// 	const handleSpeedChange = (event: ChangeEvent<HTMLInputElement>) => {
-// 		setSpeed(Number(event.target.value))
-// 	}
-
-// 	return (
-// 		<div>
-// 			<input
-// 				type="range"
-// 				min="1"
-// 				max="5"
-// 				step="1"
-// 				value={speed}
-// 				onChange={handleSpeedChange}
-// 			/>
-// 			<div>Speed: {speed}x</div>
-// 		</div>
-// 	)
-// }
-
-// export default SpeedSlider

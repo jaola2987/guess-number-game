@@ -20,16 +20,11 @@ export default function Chat() {
 	const { user } = useGlobalProviderContext()
 
 	useEffect(() => {
-		socket.on('connect', () => {
-			console.log('Connect!')
-		})
+		socket.on('connect', () => {})
 		socket.on('onMessage', newMessage => {
-			console.log('onMessage received')
-			console.log(newMessage)
 			setMessage(prev => [...prev, newMessage])
 		})
 		return () => {
-			console.log('Unreg...')
 			socket.off('connect')
 			socket.off('onMessage')
 		}
