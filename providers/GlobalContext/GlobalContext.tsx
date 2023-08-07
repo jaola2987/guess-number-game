@@ -82,18 +82,26 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 
 	const resultBets = (fulfiledBets: IBet[], num: number) => {
 		const updatedPoints = fulfiledBets.map(bet => {
+			const betMultiplier = +bet.multiplier
+			const betPoint = +bet.point
 			bet.point = 0
-			if (num > +bet.multiplier) {
-				bet.point = +bet.point * +bet.multiplier
+			if (num > betMultiplier) {
+				bet.point = betPoint * betMultiplier
 			}
 
-			if (bet.id === userId && num > +bet.multiplier) {
-				setCoints(prev => prev + +bet.point)
-			}
 			return bet
 		})
 		setBets([...updatedPoints])
 	}
+
+	const addCoints = useCallback(
+		(num: number) => {
+			if (multiplier < num) {
+				setCoints(prev => prev + multiplier * points)
+			}
+		},
+		[multiplier, points]
+	)
 
 	const getRanking = (fulfiledBets: IBet[]) => {
 		const updatedRanking = fulfiledBets.map(bet => {
@@ -124,10 +132,11 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 		setTimeout(() => {
 			resultBets(fulfiledBets, num)
 			getRanking(fulfiledBets)
+			addCoints(num)
 			setIsResultNunber(true)
 			setIsBetStoped(true)
 		}, speed * 3000)
-	}, [points, multiplier, speed])
+	}, [points, multiplier, speed, addCoints])
 
 	const providerValue = useMemo(
 		() => ({
