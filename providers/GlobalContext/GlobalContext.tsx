@@ -5,7 +5,6 @@ import {
 	createContext,
 	useContext,
 	useState,
-	useEffect,
 	useMemo,
 	PropsWithChildren,
 	useCallback
@@ -15,6 +14,8 @@ import { IBet, IGlobalContextProps, IRanking } from './globalContext.interface'
 const GlobalContext = createContext({} as IGlobalContextProps)
 
 const userId = +new Date()
+const POINT_STEP = 25
+const MULTIPLIE_STEP = 0.25
 
 const initialMockData = [
 	{ id: userId, name: 'You', point: '-', multiplier: '-' },
@@ -50,22 +51,25 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 	const handleCoints = useCallback((e: number) => setCoints(e), [])
 
 	const handlePointsIncrement = useCallback(
-		() => setPoints(prev => prev + 25),
+		() => setPoints(prev => prev + POINT_STEP),
 		[]
 	)
 
 	const handlePointsDecrement = useCallback(
-		() => setPoints(prev => (prev - 25 < 0 ? 0 : prev - 25)),
+		() => setPoints(prev => (prev - POINT_STEP < 0 ? 0 : prev - POINT_STEP)),
 		[]
 	)
 
 	const handleMultiplierIncrement = useCallback(
-		() => setMultiplier(prev => prev + 0.25),
+		() => setMultiplier(prev => prev + MULTIPLIE_STEP),
 		[]
 	)
 
 	const handleMultiplierDecrement = useCallback(
-		() => setMultiplier(prev => (prev - 0.25 < 0 ? 0 : prev - 0.25)),
+		() =>
+			setMultiplier(prev =>
+				prev - MULTIPLIE_STEP < 0 ? 0 : prev - MULTIPLIE_STEP
+			),
 		[]
 	)
 
@@ -78,15 +82,13 @@ export const GlobalProvider: FC<PropsWithChildren> = ({ children }) => {
 
 	const resultBets = (fulfiledBets: IBet[], num: number) => {
 		const updatedPoints = fulfiledBets.map(bet => {
+			bet.point = 0
 			if (num > +bet.multiplier) {
 				bet.point = +bet.point * +bet.multiplier
-			} else {
-				bet.point = 0
 			}
-			if (bet.id === userId) {
-				if (num > +bet.multiplier) {
-					setCoints(prev => prev + +bet.point)
-				}
+
+			if (bet.id === userId && num > +bet.multiplier) {
+				setCoints(prev => prev + +bet.point)
 			}
 			return bet
 		})
